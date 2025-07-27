@@ -4,14 +4,14 @@ metadata:
   name: sayhello-server
   namespace: argocd
 spec:
-  project: default
+  project: default # TODO: consider apps group
   source:
-    repoURL: https://github.com/your-org/td-gitops.git  # ← Replace with your actual repo
+    repoURL: https://github.com/yanivamram/td-gitops.git
     targetRevision: HEAD
     path: sayhello-server
   destination:
     server: https://kubernetes.default.svc
-    namespace: default  # ← You can change this if you prefer another namespace
+    namespace: td
   syncPolicy:
     automated:
       selfHeal: true
