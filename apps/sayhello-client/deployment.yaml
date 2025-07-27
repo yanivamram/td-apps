@@ -5,18 +5,26 @@ metadata:
   labels:
     app: sayhello-client
 spec:
-  containers:
-  - name: client
-    image: gcr.io/traffic-director-466922/td-app-client:latest
-    env:
-    - name: GRPC_XDS_BOOTSTRAP
-      value: /etc/grpc/bootstrap.json
-    volumeMounts:
-    - name: grpc-bootstrap
-      mountPath: /etc/grpc
-      readOnly: true
-  volumes:
-  - name: grpc-bootstrap
-    configMap:
-      name: grpc-xds-bootstrap
-
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sayhello-client
+  template:
+    metadata:
+      labels:
+        app: sayhello-client
+    spec:
+      containers:
+      - name: client
+        image: gcr.io/traffic-director-466922/td-app-client:latest
+        env:
+        - name: GRPC_XDS_BOOTSTRAP
+          value: /etc/grpc/bootstrap.json
+        volumeMounts:
+        - name: grpc-bootstrap
+          mountPath: /etc/grpc
+          readOnly: true
+      volumes:
+      - name: grpc-bootstrap
+        configMap:
+          name: grpc-xds-bootstrap
