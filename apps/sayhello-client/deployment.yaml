@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sayhello-client
+  labels:
+    app: sayhello-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sayhello-client
+  template:
+    metadata:
+      labels:
+        app: sayhello-client
+    spec:
+      containers:
+      - name: client
+        image: gcr.io/traffic-director-466922/td-app-client:latest
+        imagePullPolicy: Always
