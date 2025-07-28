@@ -14,8 +14,8 @@ spec:
       labels:
         app: sayhello-server
     spec:
-      containers:
       serviceAccountName: sayhello-client
+      containers:
       - name: sayhello-server
         image: gcr.io/traffic-director-466922/td-app-app:latest
         ports:
