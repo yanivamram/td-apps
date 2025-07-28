@@ -14,6 +14,7 @@ spec:
       labels:
         app: sayhello-client
     spec:
+      serviceAccountName: sayhello-client
       containers:
       - name: client
         image: gcr.io/traffic-director-466922/td-app-client:latest
