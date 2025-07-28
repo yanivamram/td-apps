@@ -4,12 +4,12 @@ metadata:
   name: sayhello-server
   namespace: demo
   annotations:
-    cloud.google.com/neg: '{"exposed_ports": {"8080":{}}}'  # Creates a standalone NEG
+    cloud.google.com/neg: '{"exposed_ports": {"50051":{}}}'  # Creates a standalone NEG
 spec:
   selector:
     app: sayhello-server
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 50051
+      targetPort: 50051
   type: ClusterIP  # Keep it internal — Traffic Director uses NEGs, not an external LB
