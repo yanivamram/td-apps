@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: grpc-xds-bootstrap
-  namespace: default
+  namespace: demo
 data:
   bootstrap.json: |
     {

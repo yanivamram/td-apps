@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sayhello-client
+  namespace: demo
   labels:
     app: sayhello-client
 spec:
