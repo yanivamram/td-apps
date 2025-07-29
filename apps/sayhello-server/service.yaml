@@ -4,7 +4,8 @@ metadata:
   name: sayhello-server
   namespace: demo
   annotations:
-    cloud.google.com/neg: '{"exposed_ports": {"50051":{}}}'  # Creates a standalone NEG
+    cloud.google.com/neg: '{"exposed_ports": {"50051":{}}, "neg-type": "GCE_VM_IP_PORT"}'
+    networking.gke.io/enable-traffic-director: "true"
 spec:
   selector:
     app: sayhello-server
@@ -12,4 +13,4 @@ spec:
     - protocol: TCP
       port: 50051
       targetPort: 50051
-  type: ClusterIP  # Keep it internal — Traffic Director uses NEGs, not an external LB
+  type: ClusterIP
